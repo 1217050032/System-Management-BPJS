@@ -12,8 +12,6 @@ var schema = new mongoose.Schema({
     },
     gender: String,
     status: String,
-    
-    // New BPJS management fields
     bpjs_type: String,
     bpjs_number: String,
     last_payment: String
