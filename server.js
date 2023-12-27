@@ -7,18 +7,15 @@ const path = require('path');
 const connectDB = require('./server/database/connection');
 
 const app = express();
-app.use(cors({
-  origin:["htpps://deploy-mern-1whq.vercel.app"],
-  method:["POST","GET"],
-  credentials:true
-}
-             });
+
+dotenv.config( { path : 'config.env'} )
+const PORT = process.env.PORT || 8080
 
 // log requests
 app.use(morgan('tiny'));
 
 // mongodb connection
-mongoose.connect('mongodb+srv://admin:admin123@cluster0.gx0g6r4.mongodb.net/?retryWrites=true&w=majority')
+connectDB();
 
 // parse request to body-parser
 app.use(bodyparser.urlencoded({ extended : true}))
